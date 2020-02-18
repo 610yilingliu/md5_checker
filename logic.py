@@ -1,12 +1,16 @@
 import hashlib
 # filedialog have to be imported indiidually
 from tkinter import filedialog
+from multiprocessing import Process, Queue, Array, RLock
+import os
+
+
 
 def md5_check(filepath):
     md5_value = hashlib.md5()
     with open(filepath, 'rb') as f:
         while True:
-            data_flow = f.read(10000)
+            data_flow = f.read(1024*1024*500)
             if not data_flow:
                 break
             md5_value.update(data_flow)
@@ -29,8 +33,6 @@ def print_md5(infile, label):
     label.config(text = "MD5值：" + md5)
 
 def count_show(p1, p2, m1, m2, result_tag):
-    print(p1)
-    print(p2)
     if p1:
         print_md5(p1, m1)
     if p2:
