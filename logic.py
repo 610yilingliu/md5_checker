@@ -1,7 +1,6 @@
 import hashlib
 # filedialog have to be imported indiidually
 from tkinter import filedialog
-from multiprocessing import Process, Queue, Array, RLock
 import os
 
 
